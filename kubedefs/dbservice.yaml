@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vprodb
+spec:
+  selector:
+    app: vprodb   # Must match pod/deployment labels
+  ports:
+    - protocol: TCP
+      port: 3306        # Port exposed by the service
+      targetPort: vprodb-port # Port on the container
+  type: ClusterIP      # Default (only accessible inside cluster)
